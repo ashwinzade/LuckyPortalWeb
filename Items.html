@@ -131,7 +131,7 @@
       </div>
     </div>
   </nav>
-  <div class="row">    
+  <div class="row">
     <div class="new-arrival-div">
       <img class="new-arrival"  onclick="newarrival()" src="order/images/new-arrival.png"/>
     </div>
@@ -152,7 +152,7 @@
       <div class="filter-area">
         <div class="search-controls">
           <span class="search-controls-removable">
-            <span id="filter-caption"></span>  
+            <span id="filter-caption"></span>
             <span id="filter-text"></span>
           </span>
           <div class="search-controls_filter_pills" onclick="removeFilter()">
@@ -334,13 +334,36 @@
   }
 
 
-  var catSubCat = "";
-  var filter = "";
-
-  var markupitems = "";
+  var catSubCat = '';
+  var newArrivalFlag = false;
+  var filter = '';
+  var markupitems = '';
   var pageNo = 1;
   var RowsCount = 100;
   var windowHeight = 0;
+
+  function resetSelections() {
+    catSubCat = '';
+    newArrivalFlag = false;
+    filter = '';
+    markupitems = '';
+    pageNo = 1;
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0;
+    clearFilterText();
+  }
+
+  function setFilterText(textToSet) {
+    // $('#filter-caption').html('Category&nbsp: &nbsp');
+    // $('#filter-caption').html('Filter&nbsp: &nbsp');
+    $('#filter-text').html(textToSet);
+    $('.filter-area').show();
+  }
+  function clearFilterText() {
+    $('#filter-text').html('');
+    $('.filter-area').hide();
+  }
+
   initData();
   function onImgError(source) {
     source.src = 'image/imagenotfound.png';
@@ -350,19 +373,19 @@
   }
 
   LoadItemCategories();
-  markupitems = '';
   LoadItems();
   getCart();
   function LoadItems() {
     var token = localStorage.getItem("token");
-    var requestUrl = localStorage.getItem("apiServer") + 'api/item?Page=' + pageNo + '&Rows=' + RowsCount + '&catSubcat=' + catSubCat + '&filter=' + filter;
+    var requestUrl = localStorage.getItem("apiServer") + 'api/item?Page='
+      + pageNo + '&Rows=' + RowsCount + '&catSubcat=' + catSubCat + '&filter=' + filter + '&newArrival=' + newArrivalFlag;
     $.ajax({
       url: requestUrl,
       type: "GET",
       headers: { "Authorization": "Bearer " + token },
       success: function (result) {
         windowHeight = window.innerHeight
-        if (result.length == 0) {
+        if (result.length == 0 && markupitems === '') {
           $('.listing-section').html('<h3>No Record found</h3>');
           return;
         }
@@ -370,6 +393,10 @@
         for (var i = 0; i < data.length; i++) {
           var item = data[i];
           var itemBarcod = item.barcod === null ? item.iteM_NO : item.barcod;
+          var imagePath =item.imagePath;
+          var imageName =item.imageName;
+          var price =item.price;
+          var lonG_DESCR =item.lonG_DESCR;
           var itemNoStr = "'" + item.iteM_NO + "'";
           var itemid = "'" + item.id + "'";
           var boxQnt = item.proF_NO_1;
@@ -378,12 +405,12 @@
           }
           markupitems += '<div class="product">'
             + '<div class="image-box">'
-            + '<img class="images" src="' + item.imagePath + item.imageName + '" alt="" onerror="onImgError(this);"" width="100%" height="600">'
+            + '<img class="images" src="assets/img/ecommerce/' + imagePath +'/' + imageName + '" alt="" onerror="onImgError(this);"" width="100%" height="600">'
             + '</div>'
             + '<div class="text-box">'
             + '    <h2 class="item">' + itemBarcod + ' </h2>'
-            + '    <h3 class="price">$ ' + Number(item.prC_1).toFixed(2) + '</h3>'
-            + '    <p class="description ellipsis" title="' + item.lonG_DESCR + '">' + item.lonG_DESCR + '</p>'
+            + '    <h3 class="price">$ ' + Number(price).toFixed(2) + '</h3>'
+            + '    <p class="description ellipsis" title="' + lonG_DESCR + '">' + lonG_DESCR + '</p>'
             + '    <label>Box Quantity:</label>'
             + '    <input type="text" disabled value="' + boxQnt + '">'//
             + '    <label for="item-' + i + '-quantity">Quantity:</label>'
@@ -437,33 +464,21 @@
     });
   }
 
-  function categoryClicked(e) {    
+  function categoryClicked(e) {
     console.log(e.target.nodeName);
     if ($('.menuimage').css('display') == 'block') {
       $('.category-listing').attr('style', 'display:none !important');
     }
     if (e.target && e.target.nodeName == "LI") {
-      $('.filter-area').show();
-      $('#filter-caption').html('Category&nbsp: &nbsp');
-      $('#filter-text').html(e.target.innerHTML.split('<')[0]);
+      resetSelections()
+      setFilterText(e.target.innerHTML.split('<')[0])
       catSubCat = e.target.id;
-      markupitems = '';
-      filter = '';
-      pageNo = 1;
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0;
       LoadItems();
     }
   }
-  function removeFilter(){
-    $('.filter-area').hide();
-      catSubCat = '';
-      markupitems = '';
-      filter = '';
-      pageNo = 1;
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0;
-      LoadItems();
+  function removeFilter() {
+    resetSelections();
+    LoadItems();
   }
 
   var iteM_NO_Arr = [];
@@ -541,16 +556,11 @@
       }
     })
   }
-  function newarrival(){
-    var token = localStorage.getItem("token");
-    var requestUrl = localStorage.getItem("apiServer") + 'api/newarrival';
-    $.ajax({
-      url: requestUrl,
-      headers: { "Authorization": "Bearer " + token },
-      success: function (result) {
-        LoadItems();
-      }
-    })
+  function newarrival() {
+    resetSelections();
+    setFilterText('New Arriaval')
+    newArrivalFlag = true;
+    LoadItems();
   }
 
   //var serachList = brandsList.Perfumes.concat(brandsList.makups, brandsList.Cosmetics);
@@ -589,9 +599,6 @@
   document.getElementById('productSearch1').addEventListener('input', serachitem);
   document.getElementById('productSearch').addEventListener('input', serachitem);
   function serachitem(e) {
-    $('.filter-area').show();
-      $('#filter-caption').html('Filter&nbsp: &nbsp');
-      $('#filter-text').html(e.target.value);
     // Clear the timeout if it has already been set.
     // This will prevent the previous task from executing
     // if it has been less than <MILLISECONDS>
@@ -603,18 +610,14 @@
     }, 1000);
   }
   function serachitemProcess(value) {
-    debugger;
-    catSubCat = '';
-    markupitems = '';
-    pageNo = 1;
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0;
+    resetSelections();
     if (value.length == 0) {
       filter = '';
       LoadItems();
       // $('.searchIteam').hide();
 
     } else {
+      setFilterText(value)
       filter = value.toLowerCase();
       LoadItems();
     }
@@ -669,29 +672,29 @@
     color: #ff3f6c;
   }
 
-  
+
   .new-arrival{
-    width: 25%;   
+    width: 25%;
      height: 75px;
-    }
+  }
     .new-arrival-div{
-       position: fixed;
+    position: fixed;
        top: 73px;
-       margin-top: 7px;
-       left: 0;
-       z-index: 1;
-       cursor: pointer;
-    }
+    margin-top: 7px;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
     .filter-area{
-      margin-top: 63px;
-      height: 83px;
-      background: #ebecf0;
-      z-index: 1;
-      position: fixed;
-      width: 75%;
-      padding: 46px 8px;
-      display: none;
-    }
+    margin-top: 63px;
+    height: 83px;
+    background: #ebecf0;
+    z-index: 1;
+    position: fixed;
+    width: 75%;
+    padding: 46px 8px;
+    display: none;
+  }
     .search-controls{
       background-color:  #fff;
     border-radius: 4px;
@@ -704,16 +707,16 @@
     margin-right: 8px;
     position: absolute;
     text-decoration: none;
-    }
+  }
     .search-controls-removable{
-      border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
     border-bottom-left-radius:4px;
     border-top-left-radius: 4px;
     display: flex;
     padding: 4px 8px;
-    }
+  }
     .search-controls_filter_pills{
-      border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
     border-bottom-right-radius: 4px;
     border-left: none;
     border-top-right-radius: 4px;
@@ -721,10 +724,10 @@
     display: block;
     padding: 3px 8px;
     text-align: center;
-    }
+  }
     .fa-xmark{
-      color: #999;
-      cursor: pointer;
+    color: #999;
+    cursor: pointer;
     }
 
 
