@@ -2,11 +2,11 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2022 16:11:44 GMT -->
+<!-- Mirrored from new.axilthemes.com/demo/template/etrade/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2022 16:11:44 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>eTrade || Cart</title>
+    <title>eTrade || Checkout</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -245,124 +245,231 @@
 
     <main class="main-wrapper">
 
-        <!-- Start Cart Area  -->
-        <div class="axil-product-cart-area axil-section-gap">
+        <!-- Start Checkout Area  -->
+        <div class="axil-checkout-area axil-section-gap">
             <div class="container">
-                <div class="axil-product-cart-wrap">
-                    <div class="product-table-heading">
-                        <h4 class="title">Your Cart</h4>
-                        <a href="#" class="cart-clear">Clear Shoping Cart</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table axil-product-table axil-cart-table mb--40">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="product-remove"></th>
-                                    <th scope="col" class="product-thumbnail">Product</th>
-                                    <th scope="col" class="product-title"></th>
-                                    <th scope="col" class="product-price">Price</th>
-                                    <th scope="col" class="product-quantity">Quantity</th>
-                                    <th scope="col" class="product-subtotal">Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product.html"><img src="assets/images/product/electric/product-01.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product.html">Wireless PS Handler</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="axil-checkout-notice">
+                                <div class="axil-toggle-box">
+                                    <div class="toggle-bar"><i class="fas fa-user"></i> Returning customer? <a href="javascript:void(0)" class="toggle-btn">Click here to login <i class="fas fa-angle-down"></i></a>
+                                    </div>
+                                    <div class="axil-checkout-login toggle-open">
+                                        <p>If you didn't Logged in, Please Log in first.</p>
+                                        <div class="signin-box">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" name="password">
+                                            </div>
+                                            <div class="form-group mb--0">
+                                                <button type="submit" class="axil-btn btn-bg-primary submit-btn">Sign In</button>
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product-2.html"><img src="assets/images/product/electric/product-02.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product-2.html">Gradient Light Keyboard</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
+                                    </div>
+                                </div>
+                                <div class="axil-toggle-box">
+                                    <div class="toggle-bar"><i class="fas fa-pencil"></i> Have a coupon? <a href="javascript:void(0)" class="toggle-btn">Click here to enter your code <i class="fas fa-angle-down"></i></a>
+                                    </div>
+
+                                    <div class="axil-checkout-coupon toggle-open">
+                                        <p>If you have a coupon code, please apply it below.</p>
+                                        <div class="input-group">
+                                            <input placeholder="Enter coupon code" type="text">
+                                            <div class="apply-btn">
+                                                <button type="submit" class="axil-btn btn-bg-primary">Apply</button>
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product-3.html"><img src="assets/images/product/electric/product-03.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product-3.html">HD CC Camera</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="axil-checkout-billing">
+                                <h4 class="title mb--40">Billing details</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>First Name <span>*</span></label>
+                                            <input type="text" id="first-name" placeholder="Adam">
                                         </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="cart-update-btn-area">
-                        <div class="input-group product-cupon">
-                            <input placeholder="Enter coupon code" type="text">
-                            <div class="product-cupon-btn">
-                                <button type="submit" class="axil-btn btn-outline">Apply</button>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Last Name <span>*</span></label>
+                                            <input type="text" id="last-name" placeholder="John">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" id="company-name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country/ Region <span>*</span></label>
+                                    <select id="Region">
+                                        <option value="3">Australia</option>
+                                        <option value="4">England</option>
+                                        <option value="6">New Zealand</option>
+                                        <option value="5">Switzerland</option>
+                                        <option value="1">United Kindom (UK)</option>
+                                        <option value="2">United States (USA)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Street Address <span>*</span></label>
+                                    <input type="text" id="address1" class="mb--15" placeholder="House number and street name">
+                                    <input type="text" id="address2" placeholder="Apartment, suite, unit, etc. (optonal)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Town/ City <span>*</span></label>
+                                    <input type="text" id="town">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <input type="text" id="country">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone <span>*</span></label>
+                                    <input type="tel" id="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address <span>*</span></label>
+                                    <input type="email" id="email">
+                                </div>
+                                <div class="form-group input-group">
+                                    <input type="checkbox" id="checkbox1" name="account-create">
+                                    <label for="checkbox1">Create an account</label>
+                                </div>
+                                <div class="form-group different-shippng">
+                                    <div class="toggle-bar">
+                                        <a href="javascript:void(0)" class="toggle-btn">
+                                            <input type="checkbox" id="checkbox2" name="diffrent-ship">
+                                            <label for="checkbox2">Ship to a different address?</label>
+                                        </a>
+                                    </div>
+                                    <div class="toggle-open">
+                                        <div class="form-group">
+                                            <label>Country/ Region <span>*</span></label>
+                                            <select id="Region">
+                                                <option value="3">Australia</option>
+                                                <option value="4">England</option>
+                                                <option value="6">New Zealand</option>
+                                                <option value="5">Switzerland</option>
+                                                <option value="1">United Kindom (UK)</option>
+                                                <option value="2">United States (USA)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Street Address <span>*</span></label>
+                                            <input type="text" id="address1" class="mb--15" placeholder="House number and street name">
+                                            <input type="text" id="address2" placeholder="Apartment, suite, unit, etc. (optonal)">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Town/ City <span>*</span></label>
+                                            <input type="text" id="town">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Country</label>
+                                            <input type="text" id="country">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Phone <span>*</span></label>
+                                            <input type="tel" id="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Other Notes (optional)</label>
+                                    <textarea id="notes" rows="2" placeholder="Notes about your order, e.g. speacial notes for delivery."></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="update-btn">
-                            <a href="#" class="axil-btn btn-outline">Update Cart</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
-                            <div class="axil-order-summery mt--80">
-                                <h5 class="title mb--20">Order Summary</h5>
+                        <div class="col-lg-6">
+                            <div class="axil-order-summery order-checkout-summery">
+                                <h5 class="title mb--20">Your Order</h5>
                                 <div class="summery-table-wrap">
-                                    <table class="table summery-table mb--30">
+                                    <table class="table summery-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
+                                            <tr class="order-product">
+                                                <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
+                                                <td>$117.00</td>
+                                            </tr>
+                                            <tr class="order-product">
+                                                <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
+                                                <td>$198.00</td>
+                                            </tr>
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
                                                 <td>$117.00</td>
                                             </tr>
                                             <tr class="order-shipping">
-                                                <td>Shipping</td>
-                                                <td>
+                                                <td colspan="2">
+                                                    <div class="shipping-amount">
+                                                        <span class="title">Shipping Method</span>
+                                                        <span class="amount">$35.00</span>
+                                                    </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio1" name="shipping" checked>
                                                         <label for="radio1">Free Shippping</label>
                                                     </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio2" name="shipping">
-                                                        <label for="radio2">Local: $35.00</label>
+                                                        <label for="radio2">Local</label>
                                                     </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio3" name="shipping">
-                                                        <label for="radio3">Flat rate: $12.00</label>
+                                                        <label for="radio3">Flat rate</label>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr class="order-tax">
-                                                <td>State Tax</td>
-                                                <td>$8.00</td>
-                                            </tr>
                                             <tr class="order-total">
                                                 <td>Total</td>
-                                                <td class="order-total-amount">$125.00</td>
+                                                <td class="order-total-amount">$323.00</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="checkout.html" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
+                                <div class="order-payment-method">
+                                    <div class="single-payment">
+                                        <div class="input-group">
+                                            <input type="radio" id="radio4" name="payment">
+                                            <label for="radio4">Direct bank transfer</label>
+                                        </div>
+                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                    <div class="single-payment">
+                                        <div class="input-group">
+                                            <input type="radio" id="radio5" name="payment">
+                                            <label for="radio5">Cash on delivery</label>
+                                        </div>
+                                        <p>Pay with cash upon delivery.</p>
+                                    </div>
+                                    <div class="single-payment">
+                                        <div class="input-group justify-content-between align-items-center">
+                                            <input type="radio" id="radio6" name="payment" checked>
+                                            <label for="radio6">Paypal</label>
+                                            <img src="assets/images/others/payment.png" alt="Paypal payment">
+                                        </div>
+                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    </div>
+                                </div>
+                                <button type="submit" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        <!-- End Cart Area  -->
+        <!-- End Checkout Area  -->
 
     </main>
 
@@ -886,5 +993,5 @@
 </body>
 
 
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2022 16:11:44 GMT -->
+<!-- Mirrored from new.axilthemes.com/demo/template/etrade/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Sep 2022 16:11:45 GMT -->
 </html>
